@@ -1,0 +1,56 @@
+[gd_scene load_steps=15 format=2]
+
+[ext_resource path="res://assets/Players/Player Green/playerGreen_up2.png" type="Texture" id=1]
+[ext_resource path="res://assets/Players/Player Green/playerGreen_up1.png" type="Texture" id=2]
+[ext_resource path="res://assets/Players/Player Green/playerGreen_walk5.png" type="Texture" id=3]
+[ext_resource path="res://assets/Players/Player Green/playerGreen_walk4.png" type="Texture" id=4]
+[ext_resource path="res://Heroi.gd" type="Script" id=5]
+[ext_resource path="res://assets/Players/Player Green/playerGreen_up3.png" type="Texture" id=6]
+[ext_resource path="res://assets/Players/Player Green/playerGreen_walk1.png" type="Texture" id=7]
+[ext_resource path="res://assets/Players/Player Green/playerGreen_walk2.png" type="Texture" id=8]
+[ext_resource path="res://assets/Players/Player Green/playerGreen_walk3.png" type="Texture" id=9]
+[ext_resource path="res://assets/Players/Player Green/playerGreen_stand.png" type="Texture" id=10]
+[ext_resource path="res://Assets (2)/Fontes/emulogic.ttf" type="DynamicFontData" id=11]
+
+[sub_resource type="SpriteFrames" id=2]
+animations = [ {
+"frames": [ ExtResource( 7 ), ExtResource( 8 ), ExtResource( 9 ), ExtResource( 4 ), ExtResource( 3 ) ],
+"loop": true,
+"name": "caminhar",
+"speed": 6.0
+}, {
+"frames": [ ExtResource( 2 ), ExtResource( 1 ), ExtResource( 6 ) ],
+"loop": true,
+"name": "descendo",
+"speed": 4.0
+}, {
+"frames": [ ExtResource( 10 ) ],
+"loop": true,
+"name": "parado",
+"speed": 5.0
+} ]
+
+[sub_resource type="CircleShape2D" id=3]
+radius = 23.0217
+
+[sub_resource type="DynamicFont" id=4]
+font_data = ExtResource( 11 )
+
+[node name="Heroi" type="KinematicBody2D"]
+position = Vector2( 483, 84 )
+script = ExtResource( 5 )
+
+[node name="AnimatedSprite" type="AnimatedSprite" parent="."]
+frames = SubResource( 2 )
+animation = "descendo"
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="."]
+position = Vector2( -1, -3 )
+shape = SubResource( 3 )
+
+[node name="Label" type="Label" parent="."]
+margin_left = -37.0
+margin_top = -61.0
+margin_right = 33.0
+margin_bottom = -21.0
+custom_fonts/font = SubResource( 4 )
